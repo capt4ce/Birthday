@@ -1,0 +1,2 @@
+<?php if($_SESSION["username"]=='' || $_SESSION["level"]=='' || $_SESSION["level"]!='admin' || $_SESSION["level"]=='picCollector') header('Location: login.php');?>
+include ./coponents/component_header.jade

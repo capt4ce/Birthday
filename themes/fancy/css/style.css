@@ -1,0 +1,17 @@
+textarea {
+  resize: none; }
+
+body#wait {
+  background-color: #3498db;
+  color: white; }
+  body#wait #main {
+    position: relative;
+    top: 10em; }
+  body#wait a#wish-btn {
+    color: white;
+    border-width: 2px;
+    border-color: white;
+    background: none; }
+    body#wait a#wish-btn:hover {
+      background-color: white;
+      color: #3498db; }

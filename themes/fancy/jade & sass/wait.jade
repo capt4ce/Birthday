@@ -1,0 +1,19 @@
+include ./components/head_comment.jade
+html
+  head
+    include ./components/component_header.jade
+    <link rel="stylesheet" href="<?php echo $theme_path;?>/css/jquery.countdown.css">
+  body#wait
+    .container.text-center#main
+      h3 The page will be up after...
+      p#active_time(hidden) <?php echo simplexml_load_file("config.xml")->active_time;?>
+      #countdown
+      h2
+        u <?php echo simplexml_load_file("config.xml")->birthday_name;?>
+        |  will have birthday after sometime
+      h4 Contribute by submitting your wish
+      a#wish-btn.btn.btn-default.btn-lg(href="wish.php") Click Here
+
+    include ./components/component_footer.jade
+    <script src="<?php echo $theme_path;?>/js/jquery.countdown.js"></script>
+    <script src="<?php echo $theme_path;?>/js/script.js"></script>
