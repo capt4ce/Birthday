@@ -1,6 +1,6 @@
 <?php
 include("functionalities/config.php");
-$start_time=strtotime(simplexml_load_file("config.xml")->active_time);
+$start_time=strtotime($config->active_time);
 $current_time=strtotime(date("Y/m/d H:i:s"));
 $theme_path="themes/$system_obj->theme_name";
 $title=$system_obj->page_title;

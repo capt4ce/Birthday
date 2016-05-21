@@ -15,10 +15,10 @@ Hope you like this small piece of work :D :D
   <body id="wait">
     <div class="container text-center" id="main">
       <h3>The page will be up after...</h3>
-      <p id="active_time" hidden><?php echo simplexml_load_file("config.xml")->active_time;?></p>
+      <p id="active_time" hidden><?php echo $config->active_time;?></p>
       <div id="countdown"></div>
       <h2>
-        <u><?php echo simplexml_load_file("config.xml")->birthday_name;?></u> will have birthday after sometime
+        <u><?php echo $config->birthday_name;?></u> will have birthday after sometime
       </h2>
       <h4>Contribute by submitting your wish</h4><a class="btn btn-default btn-lg" id="wish-btn" href="wish.php">Click Here</a>
     </div><script src="<?php echo $theme_path;?>/js/jquery-2.2.0.min.js"></script>

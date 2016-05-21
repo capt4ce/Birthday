@@ -1,5 +1,5 @@
 <?php
-include("config.php");
+include("db_init.php");
 $name=mysqli_real_escape_string($conn,$_POST["NAME"]);
 $wish=mysqli_real_escape_string($conn,$_POST["WISH"]);
 $embed=mysqli_real_escape_string($conn,$_POST["EMBED"]);
