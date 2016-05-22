@@ -14,12 +14,14 @@ Hope you like this small piece of work :D :D
   </head>
   <body>
     <div class="row" id="tbl-main">
-      <div class="panel panel-default col-md-2 text-right" id="cell-menu"><a class="btn" id="sidebar-toggle" type="button"><span class="glyphicon glyphicon-align-justify"></span></a>
+      <input id="check-toggle" type="checkbox" name="check-toggle">
+      <div class="panel panel-default col-md-2 text-right" id="cell-menu">
+        <label for="check-toggle"><a class="btn" id="sidebar-toggle" type="button"><span class="glyphicon glyphicon-menu-hamburger"></span></a></label>
         <ul>
-          <li class="menus"><a>Wish<span class="glyphicon glyphicon-pencil"></span></a></li>
-          <li class="menus"><a>Album<span class="glyphicon glyphicon-picture"></span></a></li>
-          <li class="menus"><a>Users<span class="glyphicon glyphicon-user"></span></a></li>
-          <li class="menus"><a>Settings<span class="glyphicon glyphicon-cog"></span></a></li>
+          <li class="menus"><a class="menu-labels">Wish<span class="glyphicon glyphicon-pencil"></span></a></li>
+          <li class="menus"><a class="menu-labels">Album<span class="glyphicon glyphicon-picture"></span></a></li>
+          <li class="menus"><a class="menu-labels">Users<span class="glyphicon glyphicon-user"></span></a></li>
+          <li class="menus"><a class="menu-labels">Settings<span class="glyphicon glyphicon-cog"></span></a></li>
         </ul>
       </div>
       <div id="cell-main">
