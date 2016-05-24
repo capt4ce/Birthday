@@ -1,5 +1,5 @@
 <?php
-include("config.php");
+include("functionalities/config.php");
 $server=$system_obj->server_name;
 $user=$system_obj->db_user;
 $password=$system_obj->db_password;
