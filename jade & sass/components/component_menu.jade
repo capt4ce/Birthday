@@ -1,5 +1,40 @@
+nav.navbar.navbar-inverse.visible-sm.visible-xs#mobile-navbar
+  .container
+    .navbar-header
+      button.navbar-toggle(type="button" data-toggle="collapse" data-target="#navbar-collapse")
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+      a.navbar-brand(href="index.php") Birthday
+    .collapse.navbar-collapse#navbar-collapse
+      ul.nav.navbar-nav
+        li.menus
+          a.menu-labels
+            span.glyphicon.glyphicon-comment
+            |  Wishes
+        li
+          a.menu-labels
+            span.glyphicon.glyphicon-picture
+            |  Album
+        li
+          a.menu-labels
+            span.glyphicon.glyphicon-user
+            |  Users
+        li
+          a.menu-labels
+            span.glyphicon.glyphicon-cog
+            |  Settings
+        li
+          a.menu-labels
+            span.glyphicon.glyphicon-info-sign
+            |  About
+        li
+          a.menu-labels
+            span.glyphicon.glyphicon-log-out
+            |  Signout
+
 input#check-toggle(type="checkbox" name="check-toggle")
-.panel.panel-default.col-md-2.text-right#cell-menu
+.panel.panel-default.col-md-2.text-right.visible-lg.visible-md#cell-menu
   label(for="check-toggle")
     a.btn#sidebar-toggle(type="button")
       span.glyphicon.glyphicon-menu-hamburger
