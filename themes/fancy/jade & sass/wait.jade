@@ -11,7 +11,7 @@ html
       h2
         u <?php echo simplexml_load_file("config.xml")->birthday_name;?>
         |  will have birthday after sometime
-      h4 Contribute by submitting your wish
+      h4 Feeling like to wish <?php echo getPronoun();?>
       a#wish-btn.btn.btn-default.btn-lg(href="wish.php") Click Here
 
     include ./components/component_footer.jade

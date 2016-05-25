@@ -1,4 +1,4 @@
-<?php include("functionalities/functions.php");?>
+<?php $path="functionalities/"; include("functionalities/functions.php");?>
 include ./components/head_comment.jade
 html
   head
@@ -10,24 +10,34 @@ html
       #cell-main
         h1.logo.visible-lg.visible-md Birthday
         hr.visible-lg.visible-md
-        .container.col-md-6
+        .container
           h3 Write your wish to <u><b><?php echo $config->birthday_name;?></b></u>
           br
-          .form-group
+          .form-group.col-md-6
             form(method="post")
               label(for="name") Your Name:
-              br
-              input.form-control#name(type="text" name="name")
-              br
+              .input-group
+                input.form-control.col-md-6#name(type="text" name="name")
+                .input-group-btn
+                  label.btn.btn-default(for="upload-pic") Choose Your Picture...
+              p No picture selected as your picture
+              .progress
+                .progress-bar.progress-bar-info.progress-bar-striped(role="progress-bar" aria-valuenow="0" aria-valuemax="100")
+                  |0%
               label(for="wish") Your Wish:
-              br
               textarea.form-control#wish(cols="70" rows="10" name="wish")
               br
-              label(for="embed") Additional link (for picture):
+              label Featured Picture (optional):
+              label.btn.btn-default(for="featured-pic") Choose A Picture...
               br
-              input.form-control#embed(type="text" name="embed")
+              br
               br
               button.btn.btn-default(type="reset") Clear
               button.btn.btn-primary(type="submit") Submit
 
+            form(method="post" hidden)
+              input#upload-pic(type="file" name="upload-pic")
+
+            form(method="post" hidden)
+              input#featured-pic(type="file" name="featured-pic")
     include ./components/component_footer.jade

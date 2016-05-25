@@ -1,10 +1,14 @@
+html {
+  min-height: 100%; }
+
 body {
   height: 100%;
   margin: 0;
   padding: 0;
   display: flex;
   flex-direction: column;
-  min-height: 50vh; }
+  min-height: 50vh;
+  background-color: white; }
 
 textarea {
   resize: none; }
@@ -20,6 +24,15 @@ input#check-toggle {
   input#check-toggle:checked + #cell-menu {
     margin-left: -5%;
     transition: all 0.2s ease-in-out; }
+    input#check-toggle:checked + #cell-menu + #cell-main {
+      padding-left: 12em;
+      transition: all 0.2s ease-in-out; }
+
+div#tbl-main {
+  min-height: 100%; }
+  div#tbl-main #cell-main {
+    padding-left: 5em;
+    transition: all 0.2s ease-in-out; }
 
 #cell-menu {
   border-width: 0;
@@ -27,9 +40,10 @@ input#check-toggle {
   padding: 10px 0 0 0;
   height: 100%;
   margin-right: 20px;
-  margin-left: -12%;
+  margin-left: -12.2%;
   transition: all 0.2s ease-in-out;
-  background-color: #323131; }
+  background-color: #323131;
+  position: fixed; }
   #cell-menu a#sidebar-toggle {
     text-decoration: none;
     color: white;
@@ -64,3 +78,7 @@ input#check-toggle {
         #cell-menu ul li a span {
           padding: 5px 13px 15px 18px;
           font-size: 1.3em; }
+
+@media only screen and (max-width: 991px) {
+  div#tbl-main #cell-main {
+    padding-left: 0 !important; } }

@@ -1,16 +1,13 @@
 <?php
-include("db_init.php");
+include("functions.php");
 $uName=mysqli_real_escape_string($conn, $_POST["uName"]);
 $pWord=mysqli_real_escape_string($conn, $_POST["pWord"]);
-$pWord=hash("sha512", $pWord);
+$rePWord=mysqli_real_escape_string($conn, $_POST["rePWord"]);
 $level=mysqli_real_escape_string($conn, $_POST["level"]);
-
-$result=mysqli_query($conn, "SELECT * FROM user_tbl WHERE username='$uName'");
-if (mysqli_num_rows($result)==0){
-  mysqli_query($conn, "INSERT INTO user_tbl(username,password,level) VALUES('$uName','$pWord','$level')") or die("En erorr occurs while trying to add the user");
-  header("Refresh:0");
+if (strcmp($pWord,$rePWord)!=0){
+  echo "The passwords entered are not the same";
+  header("Refresh: 3; URL=../admin_user-management.php");
+  exit();
 }
-else {
-  echo "The user is already exist";
-}
+addUser($uName, $pWord, $level);
  ?>

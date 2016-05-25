@@ -1,4 +1,4 @@
-<?php $path="functionalities/"; include("functionalities/functions.php");?><!DOCTYPE html>
+<?php $path="functionalities/";include("functionalities/functions.php");?><!DOCTYPE html>
 <!--This website is made just for fun :p
 Fabricated by: Ahmad Ali Abdilah
 For Anusha, HAPPY BIRTHDAY!!
@@ -47,34 +47,26 @@ Hope you like this small piece of work :D :D
         <h1 class="logo visible-lg visible-md">Birthday</h1>
         <hr class="visible-lg visible-md">
         <div class="container">
-          <h3>Write your wish to <u><b><?php echo $config->birthday_name;?></b></u></h3><br>
-          <div class="form-group col-md-6">
-            <form method="post">
-              <label for="name">Your Name:</label>
-              <div class="input-group">
-                <input class="form-control col-md-6" id="name" type="text" name="name">
-                <div class="input-group-btn">
-                  <label class="btn btn-default" for="upload-pic">Choose Your Picture...</label>
-                </div>
-              </div>
-              <p>No picture selected as your picture</p>
-              <div class="progress">
-                <div class="progress-bar progress-bar-info progress-bar-striped" role="progress-bar" aria-valuenow="0" aria-valuemax="100">0%</div>
-              </div>
-              <label for="wish">Your Wish:</label>
-              <textarea class="form-control" id="wish" cols="70" rows="10" name="wish"></textarea><br>
-              <label>Featured Picture (optional):</label>
-              <label class="btn btn-default" for="featured-pic">Choose A Picture...</label><br><br><br>
+          <h3>New User</h3>
+          <div class="form-group col-md-4" style="padding: 0">
+            <form method="post" action="functionalities/process_add-user.php">
+              <label for="uName">Username:</label>
+              <input class="form-control" id="uName" type="text" name="uName"><br>
+              <label for="level">Level of User</label><br>
+              <select class="form-control" id="level" name="level">
+                <option>Super Admin</option>
+                <option>Wish Manager</option>
+                <option>Picture Collector</option>
+              </select><br>
+              <label for="pWord">Password</label><br>
+              <input class="form-control" id="pWord" type="password" name="pWord"><br>
+              <label for="rePWord">Retype Password</label><br>
+              <input class="form-control" id="rePWord" type="password" name="rePWord"><br>
               <button class="btn btn-default" type="reset">Clear</button>
-              <button class="btn btn-primary" type="submit">Submit</button>
-            </form>
-            <form method="post" hidden>
-              <input id="upload-pic" type="file" name="upload-pic">
-            </form>
-            <form method="post" hidden>
-              <input id="featured-pic" type="file" name="featured-pic">
+              <button class="btn btn-primary" type="submit">Make New User</button>
             </form>
           </div>
+          <div class="container col-md-4"></div>
         </div>
       </div>
     </div><script src="js/jquery-2.2.0.min.js"></script>

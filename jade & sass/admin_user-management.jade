@@ -1,0 +1,43 @@
+<?php $path="functionalities/";include("functionalities/functions.php");?>
+include ./components/head_comment.jade
+html
+  head
+    include ./components/component_header.jade
+    title Wish
+  body
+    .row#tbl-main
+      include ./components/component_menu.jade
+      #cell-main
+        h1.logo.visible-lg.visible-md Birthday
+        hr.visible-lg.visible-md
+        .container
+          h3 New User
+          .form-group.col-md-4(style="padding: 0")
+            form(method="post" action="functionalities/process_add-user.php")
+              label(for="uName") Username:
+              input.form-control#uName(type="text" name="uName")
+              br
+              label(for="level") Level of User
+              br
+              select.form-control#level(name="level")
+                option Super Admin
+                option Wish Manager
+                option Picture Collector
+              br
+              label(for="pWord") Password
+              br
+              input.form-control#pWord(type="password" name="pWord")
+              br
+              label(for="rePWord") Retype Password
+              br
+              input.form-control#rePWord(type="password" name="rePWord")
+              br
+              button.btn.btn-default(type="reset") Clear
+              button.btn.btn-primary(type="submit") Make New User
+
+          .container.col-md-4
+
+
+
+
+    include ./components/component_footer.jade
