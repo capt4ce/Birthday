@@ -1,9 +1,9 @@
-<?php $path="functionalities/";include("functionalities/functions.php");?>
+<?php session_start();$path="functionalities/";include("functionalities/functions.php");?>
 include ./components/head_comment.jade
 html
   head
     include ./components/component_header.jade
-    title Wish
+    title User Management
   body
     .row#tbl-main
       include ./components/component_menu.jade

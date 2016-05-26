@@ -30,6 +30,18 @@ function getPossession(){
   return "her";
 }
 
+function getPageViews(){
+  global $config;
+  return $config->page_views;
+}
+
+function getWishesCount(){
+  global $conn;
+  $sql="select s_no from wish_tbl";
+  $result=mysqli_query($conn, $sql);
+  return mysqli_num_rows($result);
+}
+
 function generateSalt(){
   $intermediateSalt=md5(uniqid(rand(),true));
   $salt=substr($intermediateSalt,0,6);

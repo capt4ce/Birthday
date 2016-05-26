@@ -10,6 +10,12 @@ body {
   min-height: 50vh;
   background-color: white; }
 
+body#dashboard .status-wrapper {
+  padding: 15px 20px; }
+  body#dashboard .status-wrapper .panel.status {
+    background-color: #ecf0f1;
+    padding: 70px 0; }
+
 textarea {
   resize: none; }
 

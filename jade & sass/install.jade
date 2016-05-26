@@ -1,5 +1,77 @@
-//user provide the database details then make the database
+include ./components/head_comment.jade
+html
+  head
+    include ./components/component_header.jade
+    title User Management
+  body
+    .row#tbl-main
+      #cell-main
+        h1.logo.visible-lg.visible-md Birthday
+        hr.visible-lg.visible-md
+        .row
+          h3 Installation
+          .container
+            .form-group
+              //form for providing information about the MySql Database installed
+              form(method="post" role="form")
+                label(for="servername") MySql Servername:
+                input.form-control#servername(type="text" name="servername")
+                br
+                label(for="username") MySql Username:
+                input.form-control#username(type="text" name="username")
+                br
+                label(for="password") MySql Password:
+                input.form-control#password(type="password" name="password")
+                br
+                label(for="dbname") Database Name for This Application:
+                input.form-control#dbname(type="text" name="dbname" value="birthday")
+                br
+                button.btn.btn-primary(type="submit") Continue
+            .form-group
+              //form for providing other details
+              form(method="post" role="form")
+                label(for="admin_name") Admin Name:
+                input.form-control#admin_name(type="text" name="admin_name")
+                br
+                label Admin Picture:
+                label.btn.btn-default(for="admin_pic") Upload...
+                br
+                br
+                label(for="birthday_name") Name of The person Having Birthday:
+                input.form-control#birthday_name(type="text" name="birthday_name")
+                br
+                .radio
+                  label
+                    input#male_radio(type="radio" name="sex_radio")
+                    |  Male
+                .radio
+                  label
+                    input#female_radio(type="radio" name="sex_radio")
+                    |  Female
+                br
+                label(for="active_time") Active Time of The Page (dd/mm/yyyy):
+                input.form-control#active_time(type="text" name="active_time")
+                br
+                label.checkbox-inline()
+                  input#accept_wishes(type="checkbox" name="accept_wishes")
+                  | Accept All Wishes
+                br
+                br
+                button.btn.btn-primary(type="submit") Continue
+              form(method="post" hidden)
+                input#featured-pic(type="file" name="admin_pic")
+            .form-group
+              //form for creatig the account for the admin
+              form(method="post")
+                label(for="uName") Admin Username:
+                input.form-control#uName(type="text" name="uName")
+                br
+                label(for="pWord") Admin Password:
+                input.form-control#pWord(type="password" name="pWord")
+                br
+                label(for="rePWord") Retype Password:
+                input.form-control#rePWord(type="password" name="rePWord")
+                br
+                button.btn.btn-primary(type="submit") Finish
 
-//user input additional details to make admin user and password
-
-//all the details then saved into config.xml except username and password of admin
+    include ./components/component_footer.jade
