@@ -1,4 +1,4 @@
-<?php session_start();$path="functionalities/";include("functionalities/functions.php");?><!DOCTYPE html>
+<?php $path="functionalities/"; $page="dashboard"; include("functionalities/functions.php");?><!DOCTYPE html>
 <!--This website is made just for fun :p
 Fabricated by: Ahmad Ali Abdilah
 For Anusha, HAPPY BIRTHDAY!!
@@ -21,13 +21,13 @@ Hope you like this small piece of work :D :D
           </div>
           <div class="collapse navbar-collapse" id="navbar-collapse">
             <ul class="nav navbar-nav">
-              <li class="menus"><a class="menu-labels"><span class="glyphicon glyphicon-stats"></span> Dashboard</a></li>
-              <li class="menus"><a class="menu-labels"><span class="glyphicon glyphicon-comment"></span> Wishes</a></li>
-              <li><a class="menu-labels"><span class="glyphicon glyphicon-picture"></span> Album</a></li>
-              <li><a class="menu-labels"><span class="glyphicon glyphicon-user"></span> Users</a></li>
-              <li><a class="menu-labels"><span class="glyphicon glyphicon-cog"></span> Settings</a></li>
-              <li><a class="menu-labels"><span class="glyphicon glyphicon-info-sign"></span> About</a></li>
-              <li><a class="menu-labels"><span class="glyphicon glyphicon-log-out"></span> Signout</a></li>
+              <li class="menus"><a class="menu-labels" <?php echo passURL("admin.php");?>><span class="glyphicon glyphicon-stats"></span> Dashboard</a></li>
+              <li class="menus"><a class="menu-labels" <?php echo passURL("admin_wishes.php","Wish Manager");?>><span class="glyphicon glyphicon-comment"></span> Wishes</a></li>
+              <li><a class="menu-labels" <?php echo passURL("admin_album.php", "Picture Collector");?>><span class="glyphicon glyphicon-picture"></span> Album</a></li>
+              <li><a class="menu-labels" <?php echo passURL("admin_users.php");?>><span class="glyphicon glyphicon-user"></span> Users</a></li>
+              <li><a class="menu-labels" <?php echo passURL("admin_settings.php");?>><span class="glyphicon glyphicon-cog"></span> Settings</a></li>
+              <li><a class="menu-labels" href="about.php"><span class="glyphicon glyphicon-info-sign"></span> About</a></li>
+              <li><a class="menu-labels" href="functionalities/process_signout.php"><span class="glyphicon glyphicon-log-out"></span> Signout</a></li>
             </ul>
           </div>
         </div>
@@ -36,13 +36,13 @@ Hope you like this small piece of work :D :D
       <div class="panel panel-default col-md-2 text-right visible-lg visible-md" id="cell-menu">
         <label for="check-toggle"><a class="btn" id="sidebar-toggle" type="button"><span class="glyphicon glyphicon-menu-hamburger"></span></a></label>
         <ul>
-          <li class="menus"><a class="menu-labels">Dashboard<span class="glyphicon glyphicon-stats"></span></a></li>
-          <li class="menus"><a class="menu-labels">Wishes<span class="glyphicon glyphicon-comment"></span></a></li>
-          <li class="menus"><a class="menu-labels">Album<span class="glyphicon glyphicon-picture"></span></a></li>
-          <li class="menus"><a class="menu-labels">Users<span class="glyphicon glyphicon-user"></span></a></li>
-          <li class="menus"><a class="menu-labels">Settings<span class="glyphicon glyphicon-cog"></span></a></li>
-          <li class="menus"><a class="menu-labels">About<span class="glyphicon glyphicon-info-sign"></span></a></li>
-          <li class="menus"><a class="menu-labels">Signout<span class="glyphicon glyphicon-log-out"></span></a></li>
+          <li class="menus"><a class="menu-labels" <?php echo passURL("admin.php"); if ($page=='dashboard') echo " active"?>>Dashboard<span class="glyphicon glyphicon-stats"></span></a></li>
+          <li class="menus"><a class="menu-labels" <?php echo passURL("admin_wishes.php","Wish Manager"); if ($page=='wishes') echo " active"?>>Wishes<span class="glyphicon glyphicon-comment"></span></a></li>
+          <li class="menus"><a class="menu-labels" <?php echo passURL("admin_album.php","Picture Collector");  if ($page=='album') echo " active"?>>Album<span class="glyphicon glyphicon-picture"></span></a></li>
+          <li class="menus"><a class="menu-labels" <?php echo passURL("admin_users.php"); if ($page=='users') echo " active"?>>Users<span class="glyphicon glyphicon-user"></span></a></li>
+          <li class="menus"><a class="menu-labels" <?php echo passURL("admin_settings.php"); if ($page=='settings') echo " active"?>>Settings<span class="glyphicon glyphicon-cog"></span></a></li>
+          <li class="menus"><a class="menu-labels" href="about.php">About<span class="glyphicon glyphicon-info-sign"></span></a></li>
+          <li class="menus"><a class="menu-labels" href="functionalities/process_signout.php">Signout<span class="glyphicon glyphicon-log-out"></span></a></li>
         </ul>
       </div>
       <div id="cell-main">

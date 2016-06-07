@@ -1,1 +1,17 @@
-<?php if($_SESSION["username"]=='' || $_SESSION["level"]=='' || $_SESSION["level"]!='admin' || $_SESSION["level"]=='picCollector') header('Location: login.php');?>
+<?php $path="functionalities/"; $page="album"; include("functionalities/functions.php");?>
+include ./components/head_comment.jade
+html
+  head
+    include ./components/component_header.jade
+    title Album
+  body#dashboard
+    .row#tbl-main
+      include ./components/component_menu.jade
+      #cell-main
+        h1.logo.visible-lg.visible-md Birthday
+        hr.visible-lg.visible-md
+
+
+
+
+    include ./components/component_footer.jade

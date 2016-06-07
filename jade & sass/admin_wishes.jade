@@ -1,0 +1,57 @@
+<?php $path="functionalities/"; $page="wishes"; include("functionalities/functions.php");?>
+include ./components/head_comment.jade
+html
+  head
+    include ./components/component_header.jade
+    title Wish Management
+  body
+    .row#tbl-main
+      include ./components/component_menu.jade
+      #cell-main
+        h1.logo.visible-lg.visible-md Birthday
+        hr.visible-lg.visible-md
+        .container
+          h3 Wishes Recorded
+          .container
+            br
+            a.btn.btn-success.edit_button
+              span.glyphicon.glyphicon-ok
+              |  Confirm
+            a.btn.btn-warning.edit_button
+              span.glyphicon.glyphicon-remove
+              |  Unconfirm
+            a.btn.btn-danger.edit_button
+              span.glyphicon.glyphicon-trash
+              |  Delete
+            br
+            table.table.table-hover.displays.datatables#wish-datatable
+              thead
+                tr
+                  th
+                  th
+                    center S.NO.
+                  th
+                    center WISH
+                  th
+                    center FROM
+                  th
+                    center CONFIRMED
+              tbody
+                <?php $result=mysqli_query($conn,"SELECT s_no,wish,author,status FROM wish_tbl"); while ($row=mysqli_fetch_array($result,MYSQLI_ASSOC)){if($row['status']==1) $status="yes"; else $status="no;"?>
+                tr
+                  td(align="center")
+                    input(type="checkbox")
+                  td(align="left")
+                    <?=$row['s_no']?>
+                  td(align="left")
+                    <?=$row['wish']?>
+                  td(align="left")
+                    <?=$row['author']?>
+                  td(align="left")
+                    <?=$status?>
+                <?php } ?>
+
+    include ./components/component_footer.jade
+    script(src="js/jquery.dataTables.min.js")
+    script(src="js/dataTables.bootstrap.js")
+    script(src="js/pg-wishes.js")

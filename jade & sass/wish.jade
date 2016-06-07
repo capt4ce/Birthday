@@ -1,4 +1,4 @@
-<?php $path="functionalities/"; include("functionalities/functions.php");?>
+<?php $path="functionalities/"; $page=""; include("functionalities/functions.php");?>
 include ./components/head_comment.jade
 html
   head
@@ -11,33 +11,42 @@ html
         h1.logo.visible-lg.visible-md Birthday
         hr.visible-lg.visible-md
         .container
-          h3 Write your wish to <u><b><?php echo $config->birthday_name;?></b></u>
+          h3 Write a wish to <u><b><?php echo $config->birthday_name;?></b></u>
           br
           .form-group.col-md-6
             form(method="post")
               label(for="name") Your Name:
               .input-group
                 input.form-control.col-md-6#name(type="text" name="name")
-                .input-group-btn
-                  label.btn.btn-default(for="upload-pic") Choose Your Picture...
-              p No picture selected as your picture
-              .progress
-                .progress-bar.progress-bar-info.progress-bar-striped(role="progress-bar" aria-valuenow="0" aria-valuemax="100")
+                span.input-group-btn
+                  label.btn.btn-default#profile_label(for="profile_file") Choose Your Picture...
+              p#profile_file_status No picture selected as your picture
+              .progress#profile_file_prog_container(hidden)
+                .progress-bar.progress-bar-info.progress-bar-striped#profile_prog(role="progress-bar" aria-valuenow="0" aria-valuemax="100")
                   |0%
+                p.msg
               label(for="wish") Your Wish:
               textarea.form-control#wish(cols="70" rows="10" name="wish")
               br
               label Featured Picture (optional):
-              label.btn.btn-default(for="featured-pic") Choose A Picture...
-              br
-              br
+              label.btn.btn-default#featured_label(for="featured_file") Choose A Picture...
+              p#featured_file_status No picture selected as your picture
+              .progress#featured_file_prog_container(hidden)
+                .progress-bar.progress-bar-info.progress-bar-striped#featured_prog(role="progress-bar" aria-valuenow="0" aria-valuemax="100")
+                  |0%
+                p.msg
               br
               button.btn.btn-default(type="reset") Clear
               button.btn.btn-primary(type="submit") Submit
 
-            form(method="post" hidden)
-              input#upload-pic(type="file" name="upload-pic")
+            form.uplad#profile_file_form(action="functionalities/process-upload.php" enctype="multipart/form-data" role="form" method="post" onsubmit="return false")
+              input#profile_file(type="file" name="profile_file" onchange="input=this.id;$('#profile_file_status').text(this.value);document.getElementById('inputID').value=input;document.getElementById('dir_path').value='../embed/';$('#profile_file_form').submit()")
+              //input#inputID(type="text" name="inputID")
+              //input#dir_path(type="text" name="dir_path")
 
-            form(method="post" hidden)
-              input#featured-pic(type="file" name="featured-pic")
+            form.uplad#featured_file_form(action="functionalities/process-upload.php" enctype="multipart/form-data" role="form" method="post" onsubmit="return false" hidden)
+              input#featured_file(type="file" name="featured_file" onchange="input=this.id;$('#featured_file_status').text(this.value);$('#featured_file_form').submit()")
+
     include ./components/component_footer.jade
+    script(src="js/jquery.form.js")
+    script(src="js/try2.js")

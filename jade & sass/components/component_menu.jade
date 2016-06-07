@@ -9,33 +9,40 @@ nav.navbar.navbar-inverse.visible-sm.visible-xs#mobile-navbar
     .collapse.navbar-collapse#navbar-collapse
       ul.nav.navbar-nav
         li.menus
-          a.menu-labels
+          <a class="menu-labels" <?php echo passURL("admin.php");?>>
             span.glyphicon.glyphicon-stats
             |  Dashboard
+          </a>
         li.menus
-          a.menu-labels
+          <a class="menu-labels" <?php echo passURL("admin_wishes.php","Wish Manager");?>>
             span.glyphicon.glyphicon-comment
             |  Wishes
+          </a>
         li
-          a.menu-labels
+          <a class="menu-labels" <?php echo passURL("admin_album.php", "Picture Collector");?>>
             span.glyphicon.glyphicon-picture
             |  Album
+          </a>
         li
-          a.menu-labels
+          <a class="menu-labels" <?php echo passURL("admin_users.php");?>>
             span.glyphicon.glyphicon-user
             |  Users
+          </a>
         li
-          a.menu-labels
+          <a class="menu-labels" <?php echo passURL("admin_settings.php");?>>
             span.glyphicon.glyphicon-cog
             |  Settings
+          </a>
         li
-          a.menu-labels
+          <a class="menu-labels" href="about.php">
             span.glyphicon.glyphicon-info-sign
             |  About
+          </a>
         li
-          a.menu-labels
+          <a class="menu-labels" href="functionalities/process_signout.php">
             span.glyphicon.glyphicon-log-out
             |  Signout
+          </a>
 
 input#check-toggle(type="checkbox" name="check-toggle")
 .panel.panel-default.col-md-2.text-right.visible-lg.visible-md#cell-menu
@@ -44,24 +51,30 @@ input#check-toggle(type="checkbox" name="check-toggle")
       span.glyphicon.glyphicon-menu-hamburger
   ul
     li.menus
-      a.menu-labels Dashboard
+      <a class="menu-labels" <?php echo passURL("admin.php"); if ($page=='dashboard') echo " active"?>>Dashboard
         span.glyphicon.glyphicon-stats
- 
+      </a>
     li.menus
-      a.menu-labels Wishes
+      <a class="menu-labels" <?php echo passURL("admin_wishes.php","Wish Manager"); if ($page=='wishes') echo " active"?>>Wishes
         span.glyphicon.glyphicon-comment
+      </a>
     li.menus
-      a.menu-labels Album
+      <a class="menu-labels" <?php echo passURL("admin_album.php","Picture Collector");  if ($page=='album') echo " active"?>>Album
         span.glyphicon.glyphicon-picture
+      </a>
     li.menus
-      a.menu-labels Users
+      <a class="menu-labels" <?php echo passURL("admin_users.php"); if ($page=='users') echo " active"?>>Users
         span.glyphicon.glyphicon-user
+      </a>
     li.menus
-      a.menu-labels Settings
+      <a class="menu-labels" <?php echo passURL("admin_settings.php"); if ($page=='settings') echo " active"?>>Settings
         span.glyphicon.glyphicon-cog
+      </a>
     li.menus
-      a.menu-labels About
+      <a class="menu-labels" href="about.php">About
         span.glyphicon.glyphicon-info-sign
+      </a>
     li.menus
-      a.menu-labels Signout
+      <a class="menu-labels" href="functionalities/process_signout.php">Signout
         span.glyphicon.glyphicon-log-out
+      </a>

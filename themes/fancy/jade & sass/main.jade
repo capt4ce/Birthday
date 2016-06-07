@@ -1,5 +1,18 @@
+include ./components/head_comment.jade
 html
   head
     include ./components/component_header.jade
-    title Happy Birthday <?php echo $config->birthday_name;?>
-  body
+    title Happy Birthday <?php echo $config->birthday_name?>
+  body#main
+    .container#pics1
+      <?php $result=getSelectedPictures(1,2); for(i=0; i<$result; i++){?>
+        .pic_container
+          img(src="<?=$row['link']?>")
+          .pic_shade
+      <?php ?>
+    .container#wishes
+
+    .container#pics2
+
+
+    include ./components/component_footer.jade

@@ -103,6 +103,30 @@ div#tbl-main
           padding: 5px 13px 15px 18px
           font-size: 1.3em
 
+#cell-main
+  table
+    tbody
+      td
+        cursor: pointer
+
+
+
+ul
+  li
+    a
+      &[active]
+        color: #323131 !important
+        background:
+          color: white !important
+
+      &[disabled]
+        color: #606060 !important
+        &:hover
+          background:
+            color: #323131 !important
+
+.edit_button
+  margin: 0 10px 20px 0
 
 @media only screen and (max-width: 991px)
   div#tbl-main

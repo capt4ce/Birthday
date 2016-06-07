@@ -1,0 +1,50 @@
+<?php $path="functionalities/"; $page="settings"; include("functionalities/functions.php");?>
+include ./components/head_comment.jade
+html
+  head
+    include ./components/component_header.jade
+    title User Management
+  body
+    .row#tbl-main
+      include ./components/component_menu.jade
+      #cell-main
+        h1.logo.visible-lg.visible-md Birthday
+        hr.visible-lg.visible-md
+        .container.row
+          h3 Settings
+          .container
+            .form-group.col-md-6
+              //form for providing other details
+              form(method="post" role="form")
+                label(for="admin_name") Admin Name:
+                <input class="form-control" id="admin_name" type="text" name="admin_name" value="<?php echo $config->admin_name?>">
+                br
+                label Admin Picture:
+                label.btn.btn-default(for="admin_pic") Upload...
+                br
+                br
+                label(for="birthday_name") Name of The person Having Birthday:
+                <input class="form-control" id="birthday_name" type="text" name="birthday_name" value="<?php echo $config->birthday_name?>">
+                br
+                .radio
+                  label
+                    input#male_radio(type="radio" name="sex_radio")
+                    |  Male
+                .radio
+                  label
+                    input#female_radio(type="radio" name="sex_radio")
+                    |  Female
+                br
+                label(for="active_time") Active Time of The Page (dd/mm/yyyy):
+                <input class="form-control" id="active_time" type="text" name="active_time" value="<?php echo $config->active_time?>">
+                br
+                label.checkbox-inline()
+                  <input id="accept_wishes" type="checkbox" name="accept_wishes" <?php if ($config->active_time=="yes") echo checked?>>
+                  | Accept All Wishes
+                br
+                br
+                button.btn.btn-primary(type="submit") Save Changes
+              form(method="post" hidden)
+                input#featured-pic(type="file" name="admin_pic")
+
+    include ./components/component_footer.jade

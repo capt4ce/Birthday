@@ -1,4 +1,4 @@
-<?php $path="functionalities/"; include("functionalities/functions.php");?><!DOCTYPE html>
+<?php $path="functionalities/"; $page=""; include("functionalities/functions.php");?><!DOCTYPE html>
 <!--This website is made just for fun :p
 Fabricated by: Ahmad Ali Abdilah
 For Anusha, HAPPY BIRTHDAY!!
@@ -21,12 +21,13 @@ Hope you like this small piece of work :D :D
           </div>
           <div class="collapse navbar-collapse" id="navbar-collapse">
             <ul class="nav navbar-nav">
-              <li class="menus"><a class="menu-labels"><span class="glyphicon glyphicon-comment"></span> Wishes</a></li>
-              <li><a class="menu-labels"><span class="glyphicon glyphicon-picture"></span> Album</a></li>
-              <li><a class="menu-labels"><span class="glyphicon glyphicon-user"></span> Users</a></li>
-              <li><a class="menu-labels"><span class="glyphicon glyphicon-cog"></span> Settings</a></li>
-              <li><a class="menu-labels"><span class="glyphicon glyphicon-info-sign"></span> About</a></li>
-              <li><a class="menu-labels"><span class="glyphicon glyphicon-log-out"></span> Signout</a></li>
+              <li class="menus"><a class="menu-labels" <?php echo passURL("admin.php");?>><span class="glyphicon glyphicon-stats"></span> Dashboard</a></li>
+              <li class="menus"><a class="menu-labels" <?php echo passURL("admin_wishes.php","Wish Manager");?>><span class="glyphicon glyphicon-comment"></span> Wishes</a></li>
+              <li><a class="menu-labels" <?php echo passURL("admin_album.php", "Picture Collector");?>><span class="glyphicon glyphicon-picture"></span> Album</a></li>
+              <li><a class="menu-labels" <?php echo passURL("admin_users.php");?>><span class="glyphicon glyphicon-user"></span> Users</a></li>
+              <li><a class="menu-labels" <?php echo passURL("admin_settings.php");?>><span class="glyphicon glyphicon-cog"></span> Settings</a></li>
+              <li><a class="menu-labels" href="about.php"><span class="glyphicon glyphicon-info-sign"></span> About</a></li>
+              <li><a class="menu-labels" href="functionalities/process_signout.php"><span class="glyphicon glyphicon-log-out"></span> Signout</a></li>
             </ul>
           </div>
         </div>
@@ -35,49 +36,58 @@ Hope you like this small piece of work :D :D
       <div class="panel panel-default col-md-2 text-right visible-lg visible-md" id="cell-menu">
         <label for="check-toggle"><a class="btn" id="sidebar-toggle" type="button"><span class="glyphicon glyphicon-menu-hamburger"></span></a></label>
         <ul>
-          <li class="menus"><a class="menu-labels">Wishes<span class="glyphicon glyphicon-comment"></span></a></li>
-          <li class="menus"><a class="menu-labels">Album<span class="glyphicon glyphicon-picture"></span></a></li>
-          <li class="menus"><a class="menu-labels">Users<span class="glyphicon glyphicon-user"></span></a></li>
-          <li class="menus"><a class="menu-labels">Settings<span class="glyphicon glyphicon-cog"></span></a></li>
-          <li class="menus"><a class="menu-labels">About<span class="glyphicon glyphicon-info-sign"></span></a></li>
-          <li class="menus"><a class="menu-labels">Signout<span class="glyphicon glyphicon-log-out"></span></a></li>
+          <li class="menus"><a class="menu-labels" <?php echo passURL("admin.php"); if ($page=='dashboard') echo " active"?>>Dashboard<span class="glyphicon glyphicon-stats"></span></a></li>
+          <li class="menus"><a class="menu-labels" <?php echo passURL("admin_wishes.php","Wish Manager"); if ($page=='wishes') echo " active"?>>Wishes<span class="glyphicon glyphicon-comment"></span></a></li>
+          <li class="menus"><a class="menu-labels" <?php echo passURL("admin_album.php","Picture Collector");  if ($page=='album') echo " active"?>>Album<span class="glyphicon glyphicon-picture"></span></a></li>
+          <li class="menus"><a class="menu-labels" <?php echo passURL("admin_users.php"); if ($page=='users') echo " active"?>>Users<span class="glyphicon glyphicon-user"></span></a></li>
+          <li class="menus"><a class="menu-labels" <?php echo passURL("admin_settings.php"); if ($page=='settings') echo " active"?>>Settings<span class="glyphicon glyphicon-cog"></span></a></li>
+          <li class="menus"><a class="menu-labels" href="about.php">About<span class="glyphicon glyphicon-info-sign"></span></a></li>
+          <li class="menus"><a class="menu-labels" href="functionalities/process_signout.php">Signout<span class="glyphicon glyphicon-log-out"></span></a></li>
         </ul>
       </div>
       <div id="cell-main">
         <h1 class="logo visible-lg visible-md">Birthday</h1>
         <hr class="visible-lg visible-md">
         <div class="container">
-          <h3>Write your wish to <u><b><?php echo $config->birthday_name;?></b></u></h3><br>
+          <h3>Write a wish to <u><b><?php echo $config->birthday_name;?></b></u></h3><br>
           <div class="form-group col-md-6">
             <form method="post">
               <label for="name">Your Name:</label>
               <div class="input-group">
-                <input class="form-control col-md-6" id="name" type="text" name="name">
-                <div class="input-group-btn">
-                  <label class="btn btn-default" for="upload-pic">Choose Your Picture...</label>
-                </div>
+                <input class="form-control col-md-6" id="name" type="text" name="name"><span class="input-group-btn">
+                  <label class="btn btn-default" id="profile_label" for="profile_file">Choose Your Picture...</label></span>
               </div>
-              <p>No picture selected as your picture</p>
-              <div class="progress">
-                <div class="progress-bar progress-bar-info progress-bar-striped" role="progress-bar" aria-valuenow="0" aria-valuemax="100">0%</div>
+              <p id="profile_file_status">No picture selected as your picture</p>
+              <div class="progress" id="profile_file_prog_container" hidden>
+                <div class="progress-bar progress-bar-info progress-bar-striped" id="profile_prog" role="progress-bar" aria-valuenow="0" aria-valuemax="100">0%</div>
+                <p class="msg"></p>
               </div>
               <label for="wish">Your Wish:</label>
               <textarea class="form-control" id="wish" cols="70" rows="10" name="wish"></textarea><br>
               <label>Featured Picture (optional):</label>
-              <label class="btn btn-default" for="featured-pic">Choose A Picture...</label><br><br><br>
+              <label class="btn btn-default" id="featured_label" for="featured_file">Choose A Picture...</label>
+              <p id="featured_file_status">No picture selected as your picture</p>
+              <div class="progress" id="featured_file_prog_container" hidden>
+                <div class="progress-bar progress-bar-info progress-bar-striped" id="featured_prog" role="progress-bar" aria-valuenow="0" aria-valuemax="100">0%</div>
+                <p class="msg"></p>
+              </div><br>
               <button class="btn btn-default" type="reset">Clear</button>
               <button class="btn btn-primary" type="submit">Submit</button>
             </form>
-            <form method="post" hidden>
-              <input id="upload-pic" type="file" name="upload-pic">
+            <form class="uplad" id="profile_file_form" action="functionalities/process-upload.php" enctype="multipart/form-data" role="form" method="post" onsubmit="return false">
+              <input id="profile_file" type="file" name="profile_file" onchange="input=this.id;$('#profile_file_status').text(this.value);document.getElementById('inputID').value=input;document.getElementById('dir_path').value='../embed/';$('#profile_file_form').submit()">
+              <input id="inputID" type="text" name="inputID">
+              <input id="dir_path" type="text" name="dir_path">
             </form>
-            <form method="post" hidden>
-              <input id="featured-pic" type="file" name="featured-pic">
+            <form class="uplad" id="featured_file_form" action="functionalities/process-upload.php" enctype="multipart/form-data" role="form" method="post" onsubmit="return false" hidden>
+              <input id="featured_file" type="file" name="featured_file" onchange="input=this.id;$('#featured_file_status').text(this.value);$('#featured_file_form').submit()">
             </form>
           </div>
         </div>
       </div>
     </div><script src="js/jquery-2.2.0.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.form.js"></script>
+    <script src="js/try2.js"></script>
   </body>
 </html>

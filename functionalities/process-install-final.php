@@ -1,0 +1,1 @@
+//delete install.php file
