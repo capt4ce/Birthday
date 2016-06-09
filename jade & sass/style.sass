@@ -17,6 +17,26 @@ body#dashboard
       background-color: #ecf0f1
       padding: 70px 0
 
+body#login
+  //background-color: #3498db
+  background: url(../src/background.jpg) no-repeat center center fixed
+  -webkit-background-size: cover
+  -moz-background-size: cover
+  -o-background-size: cover
+  background-size: cover
+
+  .panel
+    position: relative
+    background: none
+
+  #back
+    position: absolute
+    background-color: white
+    height: 100%
+    width: 100%
+    opacity: 0.5
+
+
 textarea
   resize: none
 
@@ -109,13 +129,19 @@ div#tbl-main
       td
         cursor: pointer
 
+  hr
+    margin-right: 10px
+
+  #album_container
+    margin: 0px 10px 10px 0
+
 
 
 ul
   li
     a
       &[active]
-        color: #323131 !important
+        color: black !important
         background:
           color: white !important
 
@@ -132,3 +158,8 @@ ul
   div#tbl-main
     #cell-main
       padding-left: 0 !important
+
+@media only screen and (min-width: 992px)
+  body#login
+    #back
+      width: 90%

@@ -51,11 +51,12 @@ Hope you like this small piece of work :D :D
         <div class="container">
           <h3>Write a wish to <u><b><?php echo $config->birthday_name;?></b></u></h3><br>
           <div class="form-group col-md-6">
-            <form method="post">
+            <form action="functionalities/process_submit-wish.php" role="form" method="post">
               <label for="name">Your Name:</label>
               <div class="input-group">
                 <input class="form-control col-md-6" id="name" type="text" name="name"><span class="input-group-btn">
-                  <label class="btn btn-default" id="profile_label" for="profile_file">Choose Your Picture...</label></span>
+                  <label class="btn btn-default disabled" id="profile_label" for="profile_file">Choose Your Picture...</label>
+                  <input id="profile_file_name" type="text" name="profile_file" hidden></span>
               </div>
               <p id="profile_file_status">No picture selected as your picture</p>
               <div class="progress" id="profile_file_prog_container" hidden>
@@ -65,8 +66,9 @@ Hope you like this small piece of work :D :D
               <label for="wish">Your Wish:</label>
               <textarea class="form-control" id="wish" cols="70" rows="10" name="wish"></textarea><br>
               <label>Featured Picture (optional):</label>
-              <label class="btn btn-default" id="featured_label" for="featured_file">Choose A Picture...</label>
+              <label class="btn btn-default disabled" id="featured_label" for="featured_file">Choose A Picture...</label>
               <p id="featured_file_status">No picture selected as your picture</p>
+              <input id="featured_file_name" type="text" name="featured_file" hidden>
               <div class="progress" id="featured_file_prog_container" hidden>
                 <div class="progress-bar progress-bar-info progress-bar-striped" id="featured_prog" role="progress-bar" aria-valuenow="0" aria-valuemax="100">0%</div>
                 <p class="msg"></p>
@@ -74,13 +76,15 @@ Hope you like this small piece of work :D :D
               <button class="btn btn-default" type="reset">Clear</button>
               <button class="btn btn-primary" type="submit">Submit</button>
             </form>
-            <form class="uplad" id="profile_file_form" action="functionalities/process-upload.php" enctype="multipart/form-data" role="form" method="post" onsubmit="return false">
-              <input id="profile_file" type="file" name="profile_file" onchange="input=this.id;$('#profile_file_status').text(this.value);document.getElementById('inputID').value=input;document.getElementById('dir_path').value='../embed/';$('#profile_file_form').submit()">
-              <input id="inputID" type="text" name="inputID">
-              <input id="dir_path" type="text" name="dir_path">
+            <form class="uplad" id="profile_file_form" action="functionalities/process-upload.php" enctype="multipart/form-data" role="form" method="post" onsubmit="return false" hidden>
+              <input id="profile_file" type="file" name="profile_file" onchange="input=this.id;$('#profile_file_status').text(this.value);$('#inputID_p').val(input);$('#dir_path_p').val('../wishes/profile/');$('#profile_file_form').submit()" disabled>
+              <input id="inputID_p" type="text" name="inputID">
+              <input id="dir_path_p" type="text" name="dir_path">
             </form>
             <form class="uplad" id="featured_file_form" action="functionalities/process-upload.php" enctype="multipart/form-data" role="form" method="post" onsubmit="return false" hidden>
-              <input id="featured_file" type="file" name="featured_file" onchange="input=this.id;$('#featured_file_status').text(this.value);$('#featured_file_form').submit()">
+              <input id="featured_file" type="file" name="featured_file" onchange="input=this.id;$('#featured_file_status').text(this.value);$('#inputID_f').val(input);$('#dir_path_f').val('../wishes/embed/');$('#featured_file_form').submit()" disabled>
+              <input id="inputID_f" type="text" name="inputID">
+              <input id="dir_path_f" type="text" name="dir_path">
             </form>
           </div>
         </div>
@@ -88,6 +92,6 @@ Hope you like this small piece of work :D :D
     </div><script src="js/jquery-2.2.0.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.form.js"></script>
-    <script src="js/try2.js"></script>
+    <script src="js/pg-wish.js"></script>
   </body>
 </html>

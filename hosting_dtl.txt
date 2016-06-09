@@ -1,0 +1,4 @@
+host: anusha-ki-birthday.890m.com
+db_name: u629467097_bday
+db_user: u629467097_root
+db_password: birthday

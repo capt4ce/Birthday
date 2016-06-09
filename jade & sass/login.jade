@@ -3,9 +3,10 @@ html
   head
     include ./components/component_header.jade
     title Wish
-  body(style="background-color:#ecf0f1")
-    .row
-      .col-md-4.col-md-offset-4.text-center#login_form
+  body#login
+    .row(style="margin-top: 30px")
+      .col-md-4.col-md-offset-4.text-center
+        .panel#back
         .panel
           h3 Login
           hr(width="50%")

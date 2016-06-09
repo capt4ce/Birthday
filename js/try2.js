@@ -1,9 +1,9 @@
 var input='';
 $(document).ready(function(){
-  $('#profile_file').disabled=false;
-  $('#featured_file').disabled=false;
-  $('#profile_label').disabled=false;
-  $('#featured_label').disabled=false;
+  $('#profile_file').prop('disabled',false);
+  $('#featured_file').prop('disabled',false);
+  $('#profile_label').removeClass('disabled');
+  $('#featured_label').removeClass('disabled');
 
   $('td').click(function(){
     var checkbox=$(this).siblings('td').children('input');
@@ -11,16 +11,12 @@ $(document).ready(function(){
   });
 
   var prog='#'+input+'_prog_container';
-  if (input == 'profile_file')
-    var path_dir='../profile/';
-  else
-    var path_dir='../embed/';
   var options = {
-    data: {inputID: input, dir_path: path_dir},
+    //data: {inputID: input, dir_path: path_dir},
     //beforeSend : this function called before form submission
     beforeSend: function()
     {
-      $('#profile_pic_form_prog_container').show();
+      $(prog).show();
       //clear everything;
       $(prog).children('.progress-bar').text('0%');
       $(prog).children('.progress-bar').attr('aria-valuenow','0');
@@ -44,6 +40,7 @@ $(document).ready(function(){
     //complete: this function is called when the form upload is completed.
     complete: function(response)
     {
+      $('#'+input+'_name').val(document.getElementById(input).value);
       alert(response.responseText);
         //$(idd).children('.msg').html("<font color='green'>"+response.responseText+"</font>");
     },

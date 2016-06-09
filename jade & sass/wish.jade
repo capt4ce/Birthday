@@ -14,12 +14,13 @@ html
           h3 Write a wish to <u><b><?php echo $config->birthday_name;?></b></u>
           br
           .form-group.col-md-6
-            form(method="post")
+            form(action="functionalities/process_submit-wish.php" role="form" method="post")
               label(for="name") Your Name:
               .input-group
                 input.form-control.col-md-6#name(type="text" name="name")
                 span.input-group-btn
-                  label.btn.btn-default#profile_label(for="profile_file") Choose Your Picture...
+                  label.btn.btn-default.disabled#profile_label(for="profile_file") Choose Your Picture...
+                  input#profile_file_name(type="text" name="profile_file" hidden)
               p#profile_file_status No picture selected as your picture
               .progress#profile_file_prog_container(hidden)
                 .progress-bar.progress-bar-info.progress-bar-striped#profile_prog(role="progress-bar" aria-valuenow="0" aria-valuemax="100")
@@ -29,8 +30,9 @@ html
               textarea.form-control#wish(cols="70" rows="10" name="wish")
               br
               label Featured Picture (optional):
-              label.btn.btn-default#featured_label(for="featured_file") Choose A Picture...
+              label.btn.btn-default.disabled#featured_label(for="featured_file") Choose A Picture...
               p#featured_file_status No picture selected as your picture
+              input#featured_file_name(type="text" name="featured_file" hidden)
               .progress#featured_file_prog_container(hidden)
                 .progress-bar.progress-bar-info.progress-bar-striped#featured_prog(role="progress-bar" aria-valuenow="0" aria-valuemax="100")
                   |0%
@@ -39,14 +41,16 @@ html
               button.btn.btn-default(type="reset") Clear
               button.btn.btn-primary(type="submit") Submit
 
-            form.uplad#profile_file_form(action="functionalities/process-upload.php" enctype="multipart/form-data" role="form" method="post" onsubmit="return false")
-              input#profile_file(type="file" name="profile_file" onchange="input=this.id;$('#profile_file_status').text(this.value);document.getElementById('inputID').value=input;document.getElementById('dir_path').value='../embed/';$('#profile_file_form').submit()")
-              //input#inputID(type="text" name="inputID")
-              //input#dir_path(type="text" name="dir_path")
+            form.uplad#profile_file_form(action="functionalities/process-upload.php" enctype="multipart/form-data" role="form" method="post" onsubmit="return false" hidden)
+              input#profile_file(type="file" name="profile_file" onchange="input=this.id;$('#profile_file_status').text(this.value);$('#inputID_p').val(input);$('#dir_path_p').val('../wishes/profile/');$('#profile_file_form').submit()" disabled)
+              input#inputID_p(type="text" name="inputID")
+              input#dir_path_p(type="text" name="dir_path")
 
             form.uplad#featured_file_form(action="functionalities/process-upload.php" enctype="multipart/form-data" role="form" method="post" onsubmit="return false" hidden)
-              input#featured_file(type="file" name="featured_file" onchange="input=this.id;$('#featured_file_status').text(this.value);$('#featured_file_form').submit()")
+              input#featured_file(type="file" name="featured_file" onchange="input=this.id;$('#featured_file_status').text(this.value);$('#inputID_f').val(input);$('#dir_path_f').val('../wishes/embed/');$('#featured_file_form').submit()" disabled)
+              input#inputID_f(type="text" name="inputID")
+              input#dir_path_f(type="text" name="dir_path")
 
     include ./components/component_footer.jade
     script(src="js/jquery.form.js")
-    script(src="js/try2.js")
+    script(src="js/pg-wish.js")

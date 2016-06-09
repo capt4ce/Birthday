@@ -12,9 +12,10 @@ Hope you like this small piece of work :D :D
 <link href="css/style.css" rel="stylesheet">
     <title>Wish</title>
   </head>
-  <body style="background-color:#ecf0f1">
-    <div class="row">
-      <div class="col-md-4 col-md-offset-4 text-center" id="login_form">
+  <body id="login">
+    <div class="row" style="margin-top: 30px">
+      <div class="col-md-4 col-md-offset-4 text-center">
+        <div class="panel" id="back"></div>
         <div class="panel">
           <h3>Login</h3>
           <hr width="50%"><br>

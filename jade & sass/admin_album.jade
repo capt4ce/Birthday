@@ -10,8 +10,20 @@ html
       #cell-main
         h1.logo.visible-lg.visible-md Birthday
         hr.visible-lg.visible-md
+        label.btn.btn-default.edit_button.disabled#pictures_upload_label(for="pictures_upload") Upload Pictures...
+        a.btn.btn-danger.edit_button
+          span.glyphicon.glyphicon-trash
+          |  Delete
+        .panel.panel-default#album_container
+          |dfasdf
 
 
 
+    form.upload#pictures(action="functionalities/process-upload.php" method="post" enctype="multipart/form-data" role="form" onsubmit="return false" hidden)
+      input#pictures_upload(type="file" name="pictures_upload" onchange="var input=this.id; $('#'+input).children('inputID').value=input;$('#'+input).children('dir_path').value='../album/'; $('#pictures').submit()" disabled)
+      input#inputID(type="text" name="inputID")
+      input#dir_path(type="text" name="dir_path")
 
     include ./components/component_footer.jade
+    script(src="js/jquery.form.js")
+    script(src="js/pg-album.js")

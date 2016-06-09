@@ -30,6 +30,8 @@ html
             .form-group
               //form for providing other details
               form(method="post" role="form")
+                label(for="time_zone") Timezone:
+                input.form-control#time_zone(type="text" name="time_zone")
                 label(for="admin_name") Admin Name:
                 input.form-control#admin_name(type="text" name="admin_name")
                 br
@@ -55,6 +57,10 @@ html
                 label.checkbox-inline()
                   input#accept_wishes(type="checkbox" name="accept_wishes")
                   | Accept All Wishes
+                br
+                label(for="theme_name")
+                select
+                  option(value="Fancy") Fancy
                 br
                 br
                 button.btn.btn-primary(type="submit") Continue

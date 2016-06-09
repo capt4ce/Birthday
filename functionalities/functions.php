@@ -54,6 +54,13 @@ function getWishesCount(){
   return mysqli_num_rows($result);
 }
 
+function getStatusRule()
+{
+  global $config;
+  if ($config->accept_all_wishes=='yes') return '1';
+  return '0';
+}
+
 function generateSalt(){
   $intermediateSalt=md5(uniqid(rand(),true));
   $salt=substr($intermediateSalt,0,6);
@@ -115,6 +122,47 @@ function addUser($uName, $pWord,$level){
 function getSelectedPictures($start, $until){
   global $conn;
   return mysqli_query($conn, "SELECT ");
+}
+
+function getConfigDOM(){
+  global $path;
+  $dom=new DOMDocument();
+  return $dom->load($path.'config.xml');
+}
+
+function saveDBDetails($servername, $username, $password, $dbname){
+  $dom=getConfigDOM();
+  $root=$dom->documentElement;
+  $sys=$root->system_conf;
+
+  $sys->server_name=$servername;
+  $sys->db_user=$username;
+  $sys->db_password=$password;
+  $sys->db_name=$dbname;
+
+  $dom->saveXML();
+
+}
+
+function saveConfigDetails($timezone,$theme_name,$page_title,$admin_name,$admin_pic,$birthday_name,$sex, $active_time,$accept_all_wishes){
+  $dom=getConfigDOM();
+  $root=$dom->documentElement;
+
+  $sys=$root->system_conf;
+  $sys->time_zone=$timezone;
+  $sys->theme_name=$theme_name;
+  $sys->page_title=$page_title;
+
+  $root->admin_name=$admin_name;
+  $root->admin_pic=$admin_pic;
+  $root->birthday_name=$birthday_name;
+  $root->birthday_sex=$sex;
+  $root->active_time=$active_time;
+  $root->admin_name=$accept_all_wishes;
+  $root->page_views="0";
+
+  $dom->saveXML();
+
 }
 
  ?>
