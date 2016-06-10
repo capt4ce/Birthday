@@ -14,24 +14,25 @@ html
           h3 Write a wish to <u><b><?php echo $config->birthday_name;?></b></u>
           br
           .form-group.col-md-6
-            form(action="functionalities/process_submit-wish.php" role="form" method="post")
+            form#wish(action="functionalities/process_submit-wish.php" role="form" method="post" onsubmit="" enctype="multipart/form-data")
               label(for="name") Your Name:
               .input-group
                 input.form-control.col-md-6#name(type="text" name="name")
                 span.input-group-btn
                   label.btn.btn-default.disabled#profile_label(for="profile_file") Choose Your Picture...
                   input#profile_file_name(type="text" name="profile_file" hidden)
-              p#profile_file_status No picture selected as your picture
+              p.file_name#profile_file_status No picture selected as your picture
               .progress#profile_file_prog_container(hidden)
                 .progress-bar.progress-bar-info.progress-bar-striped#profile_prog(role="progress-bar" aria-valuenow="0" aria-valuemax="100")
                   |0%
                 p.msg
+              br
               label(for="wish") Your Wish:
               textarea.form-control#wish(cols="70" rows="10" name="wish")
               br
               label Featured Picture (optional):
               label.btn.btn-default.disabled#featured_label(for="featured_file") Choose A Picture...
-              p#featured_file_status No picture selected as your picture
+              p.file_name#featured_file_status No picture selected for featured picture
               input#featured_file_name(type="text" name="featured_file" hidden)
               .progress#featured_file_prog_container(hidden)
                 .progress-bar.progress-bar-info.progress-bar-striped#featured_prog(role="progress-bar" aria-valuenow="0" aria-valuemax="100")
@@ -41,15 +42,24 @@ html
               button.btn.btn-default(type="reset") Clear
               button.btn.btn-primary(type="submit") Submit
 
-            form.uplad#profile_file_form(action="functionalities/process-upload.php" enctype="multipart/form-data" role="form" method="post" onsubmit="return false" hidden)
-              input#profile_file(type="file" name="profile_file" onchange="input=this.id;$('#profile_file_status').text(this.value);$('#inputID_p').val(input);$('#dir_path_p').val('../wishes/profile/');$('#profile_file_form').submit()" disabled)
+            form.upload#profile_file_form(action="functionalities/process-upload.php" enctype="multipart/form-data" role="form" method="post" onsubmit="return false" hidden)
+              input#profile_file(type="file" name="profile_file" onchange="input=this.id;prog='#'+input+'_prog_container';$('#profile_file_status').text(this.value);$('#inputID_p').val(input);$('#dir_path_p').val('../wishes/profile/');$('#profile_file_form').submit()" disabled)
               input#inputID_p(type="text" name="inputID")
               input#dir_path_p(type="text" name="dir_path")
 
-            form.uplad#featured_file_form(action="functionalities/process-upload.php" enctype="multipart/form-data" role="form" method="post" onsubmit="return false" hidden)
-              input#featured_file(type="file" name="featured_file" onchange="input=this.id;$('#featured_file_status').text(this.value);$('#inputID_f').val(input);$('#dir_path_f').val('../wishes/embed/');$('#featured_file_form').submit()" disabled)
+            form.upload#featured_file_form(action="functionalities/process-upload.php" enctype="multipart/form-data" role="form" method="post" onsubmit="return false" hidden)
+              input#featured_file(type="file" name="featured_file" onchange="input=this.id;prog='#'+input+'_prog_container';$('#featured_file_status').text(this.value);$('#inputID_f').val(input);$('#dir_path_f').val('../wishes/embed/');$('#featured_file_form').submit()" disabled)
               input#inputID_f(type="text" name="inputID")
               input#dir_path_f(type="text" name="dir_path")
+
+    //status modal dialog
+    .modal.fade#status(role="dialog")
+      .modal-dialog
+        .modal-content
+          .modal-body(style="align: left")
+            img#loader(src="src/loader.gif" width="160px" style="display: block; margin: 0 auto ")
+          .modal-footer(hidden)
+            a.btn.btn-primary(data-dismiss="modal" onclick="if (errorR=true){$('#name').focus;}") Ok
 
     include ./components/component_footer.jade
     script(src="js/jquery.form.js")

@@ -39,7 +39,7 @@ nav.navbar.navbar-inverse.visible-sm.visible-xs#mobile-navbar
             |  About
           </a>
         li
-          <a class="menu-labels" href="functionalities/process_signout.php">
+          <a class="menu-labels" <?php echo passURL("functionalities/process_signout.php");?>>
             span.glyphicon.glyphicon-log-out
             |  Signout
           </a>
@@ -75,6 +75,6 @@ input#check-toggle(type="checkbox" name="check-toggle")
         span.glyphicon.glyphicon-info-sign
       </a>
     li.menus
-      <a class="menu-labels" href="functionalities/process_signout.php">Signout
+      <a class="menu-labels"  <?php echo passURL("functionalities/process_signout.php");?>>Signout
         span.glyphicon.glyphicon-log-out
       </a>

@@ -4,8 +4,6 @@ $store_folder=$_POST['dir_path'];
 $input=$_POST['inputID'];
 #########################
 
-echo $_POST['inputID'];
-
 if(isset($_POST))
 {
     //check $_FILES['DOC'] NOT EMPTY
