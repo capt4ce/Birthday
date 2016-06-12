@@ -50,11 +50,11 @@ input#check-toggle
   display: none
 
   &:checked + #cell-menu
-    margin-left: -5%
+    margin-left: 0px
     transition: all 0.2s ease-in-out
 
     + #cell-main
-      padding-left: 12em
+      padding-left: 170px
       transition: all 0.2s ease-in-out
 
 
@@ -62,80 +62,78 @@ div#tbl-main
   min-height: 100%
 
   #cell-main
-    padding-left: 5em
+    padding-left: 65px
     transition: all 0.2s ease-in-out
 
+    table
+      tbody
+        td
+          cursor: pointer
 
-#cell-menu
-  border:
-    width: 0
-    radius: 0
-  padding: 10px 0 0 0
-  height: 100%
-  margin-right: 20px
-  margin-left: -12.2%
-  transition: all 0.2s ease-in-out
-  background:
-    color: #323131
-  position: fixed
+    hr
+      margin-right: 10px
 
-  a#sidebar-toggle
-    text-decoration: none
-    color: white
+    .picture_container
+      margin: 0px 10px 10px 0
+
+
+  #cell-menu
     border:
-      width: 2px
-      color: #1f1f1f
-    background-color: #1f1f1f
-    font-size: 1.4em
-    margin: 10px 11px 10px 10px
-    padding: 3px 7px 3px 7px
-    height: auto
+      width: 0
+      radius: 0
+    padding: 10px 0 0 0
+    height: 100%
+    margin-right: 20px
+    margin-left: -105px
+    transition: all 0.2s ease-in-out
+    background:
+      color: #323131
+    position: fixed
+    width: 160px
 
-    &:hover
-      color: #606060
-
-  ul
-    padding: 0
-
-    li
+    a#sidebar-toggle
+      text-decoration: none
       color: white
-      list-style: none
-      width: 100%
+      border:
+        width: 2px
+        color: #1f1f1f
+      background-color: #1f1f1f
+      font-size: 18px
+      margin: 10px 11px 10px 10px
+      padding: 3px 7px 3px 7px
+      height: auto
 
-      a
-        cursor: pointer
-        font-size: 0.9em
+      &:hover
+        color: #606060
+
+    ul
+      padding: 0
+
+      li
         color: white
-        text-decoration: none
-        display: block
-        height: 50px
+        list-style: none
         width: 100%
-        padding: 10px
-        background:
-          color: none
 
-        &:hover
-          color: #323131
+        a
+          cursor: pointer
+          font-size: 12px
+          color: white
+          text-decoration: none
+          display: block
+          height: 50px
+          width: 100%
+          padding: 10px
           background:
-            color: white
+            color: none
 
-        span
-          padding: 5px 13px 15px 18px
-          font-size: 1.3em
+          &:hover
+            color: #323131
+            background:
+              color: white
 
-#cell-main
-  table
-    tbody
-      td
-        cursor: pointer
-
-  hr
-    margin-right: 10px
-
-  #album_container
-    margin: 0px 10px 10px 0
-
-
+          span
+            padding: 5px 13px 15px 18px
+            font-size: 16px
 
 ul
   li
@@ -167,6 +165,16 @@ a.cancel
     &:hover
       color: #c0392b
 
+.pictures
+  margin-bottom: 10px
+
+label.pointer
+  cursor: pointer
+
+  img
+    &:hover
+      border-width: 8px
+
 #home
   display: block
   margin: 0 auto
@@ -174,6 +182,10 @@ a.cancel
 
   &:hover
     text-decoration: none
+
+img#progress
+  display: block
+  margin: 0 auto
 
 @media only screen and (max-width: 991px)
   div#tbl-main

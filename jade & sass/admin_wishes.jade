@@ -35,9 +35,13 @@ html
                   th
                     center FROM
                   th
+                    center Profile Pic
+                  th
+                    center Featured Pic
+                  th
                     center CONFIRMED
               tbody
-                <?php $result=mysqli_query($conn,"SELECT s_no,wish,author,status FROM wish_tbl"); while ($row=mysqli_fetch_array($result,MYSQLI_ASSOC)){if($row['status']==1) $status="yes"; else $status="no;"?>
+                <?php $result=mysqli_query($conn,"SELECT s_no,wish,author,status,author_pic,embed FROM wish_tbl"); while ($row=mysqli_fetch_array($result,MYSQLI_ASSOC)){if($row['status']==1) $status="yes"; else $status="no"; if ($row['author_pic']!='') $profile="yes"; else $profile="no"; if ($row['embed']!='') $embed="yes"; else $embed="no"?>
                 tr
                   td(align="center")
                     input(type="checkbox")
@@ -47,6 +51,10 @@ html
                     <?=$row['wish']?>
                   td(align="left")
                     <?=$row['author']?>
+                  td(align="left")
+                    <?=$profile?>
+                  td(align="left")
+                    <?=$embed?>
                   td(align="left")
                     <?=$status?>
                 <?php } ?>

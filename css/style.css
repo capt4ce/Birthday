@@ -44,71 +44,68 @@ div.panel {
 input#check-toggle {
   display: none; }
   input#check-toggle:checked + #cell-menu {
-    margin-left: -5%;
+    margin-left: 0px;
     transition: all 0.2s ease-in-out; }
     input#check-toggle:checked + #cell-menu + #cell-main {
-      padding-left: 12em;
+      padding-left: 170px;
       transition: all 0.2s ease-in-out; }
 
 div#tbl-main {
   min-height: 100%; }
   div#tbl-main #cell-main {
-    padding-left: 5em;
+    padding-left: 65px;
     transition: all 0.2s ease-in-out; }
-
-#cell-menu {
-  border-width: 0;
-  border-radius: 0;
-  padding: 10px 0 0 0;
-  height: 100%;
-  margin-right: 20px;
-  margin-left: -12.2%;
-  transition: all 0.2s ease-in-out;
-  background-color: #323131;
-  position: fixed; }
-  #cell-menu a#sidebar-toggle {
-    text-decoration: none;
-    color: white;
-    border-width: 2px;
-    border-color: #1f1f1f;
-    background-color: #1f1f1f;
-    font-size: 1.4em;
-    margin: 10px 11px 10px 10px;
-    padding: 3px 7px 3px 7px;
-    height: auto; }
-    #cell-menu a#sidebar-toggle:hover {
-      color: #606060; }
-  #cell-menu ul {
-    padding: 0; }
-    #cell-menu ul li {
+    div#tbl-main #cell-main table tbody td {
+      cursor: pointer; }
+    div#tbl-main #cell-main hr {
+      margin-right: 10px; }
+    div#tbl-main #cell-main .picture_container {
+      margin: 0px 10px 10px 0; }
+  div#tbl-main #cell-menu {
+    border-width: 0;
+    border-radius: 0;
+    padding: 10px 0 0 0;
+    height: 100%;
+    margin-right: 20px;
+    margin-left: -105px;
+    transition: all 0.2s ease-in-out;
+    background-color: #323131;
+    position: fixed;
+    width: 160px; }
+    div#tbl-main #cell-menu a#sidebar-toggle {
+      text-decoration: none;
       color: white;
-      list-style: none;
-      width: 100%; }
-      #cell-menu ul li a {
-        cursor: pointer;
-        font-size: 0.9em;
+      border-width: 2px;
+      border-color: #1f1f1f;
+      background-color: #1f1f1f;
+      font-size: 18px;
+      margin: 10px 11px 10px 10px;
+      padding: 3px 7px 3px 7px;
+      height: auto; }
+      div#tbl-main #cell-menu a#sidebar-toggle:hover {
+        color: #606060; }
+    div#tbl-main #cell-menu ul {
+      padding: 0; }
+      div#tbl-main #cell-menu ul li {
         color: white;
-        text-decoration: none;
-        display: block;
-        height: 50px;
-        width: 100%;
-        padding: 10px;
-        background-color: none; }
-        #cell-menu ul li a:hover {
-          color: #323131;
-          background-color: white; }
-        #cell-menu ul li a span {
-          padding: 5px 13px 15px 18px;
-          font-size: 1.3em; }
-
-#cell-main table tbody td {
-  cursor: pointer; }
-
-#cell-main hr {
-  margin-right: 10px; }
-
-#cell-main #album_container {
-  margin: 0px 10px 10px 0; }
+        list-style: none;
+        width: 100%; }
+        div#tbl-main #cell-menu ul li a {
+          cursor: pointer;
+          font-size: 12px;
+          color: white;
+          text-decoration: none;
+          display: block;
+          height: 50px;
+          width: 100%;
+          padding: 10px;
+          background-color: none; }
+          div#tbl-main #cell-menu ul li a:hover {
+            color: #323131;
+            background-color: white; }
+          div#tbl-main #cell-menu ul li a span {
+            padding: 5px 13px 15px 18px;
+            font-size: 16px; }
 
 ul li a[active] {
   color: black !important;
@@ -133,12 +130,24 @@ a.cancel span {
   a.cancel span:hover {
     color: #c0392b; }
 
+.pictures {
+  margin-bottom: 10px; }
+
+label.pointer {
+  cursor: pointer; }
+  label.pointer img:hover {
+    border-width: 8px; }
+
 #home {
   display: block;
   margin: 0 auto;
   text-decoration: none; }
   #home:hover {
     text-decoration: none; }
+
+img#progress {
+  display: block;
+  margin: 0 auto; }
 
 @media only screen and (max-width: 991px) {
   div#tbl-main #cell-main {

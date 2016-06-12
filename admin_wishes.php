@@ -27,7 +27,7 @@ Hope you like this small piece of work :D :D
               <li><a class="menu-labels" <?php echo passURL("admin_users.php");?>><span class="glyphicon glyphicon-user"></span> Users</a></li>
               <li><a class="menu-labels" <?php echo passURL("admin_settings.php");?>><span class="glyphicon glyphicon-cog"></span> Settings</a></li>
               <li><a class="menu-labels" href="about.php"><span class="glyphicon glyphicon-info-sign"></span> About</a></li>
-              <li><a class="menu-labels" href="functionalities/process_signout.php"><span class="glyphicon glyphicon-log-out"></span> Signout</a></li>
+              <li><a class="menu-labels" <?php echo passURL("functionalities/process_signout.php");?>><span class="glyphicon glyphicon-log-out"></span> Signout</a></li>
             </ul>
           </div>
         </div>
@@ -42,7 +42,7 @@ Hope you like this small piece of work :D :D
           <li class="menus"><a class="menu-labels" <?php echo passURL("admin_users.php"); if ($page=='users') echo " active"?>>Users<span class="glyphicon glyphicon-user"></span></a></li>
           <li class="menus"><a class="menu-labels" <?php echo passURL("admin_settings.php"); if ($page=='settings') echo " active"?>>Settings<span class="glyphicon glyphicon-cog"></span></a></li>
           <li class="menus"><a class="menu-labels" href="about.php">About<span class="glyphicon glyphicon-info-sign"></span></a></li>
-          <li class="menus"><a class="menu-labels" href="functionalities/process_signout.php">Signout<span class="glyphicon glyphicon-log-out"></span></a></li>
+          <li class="menus"><a class="menu-labels"  <?php echo passURL("functionalities/process_signout.php");?>>Signout<span class="glyphicon glyphicon-log-out"></span></a></li>
         </ul>
       </div>
       <div id="cell-main">
@@ -65,11 +65,17 @@ Hope you like this small piece of work :D :D
                     <center>FROM</center>
                   </th>
                   <th>
+                    <center>Profile Pic</center>
+                  </th>
+                  <th>
+                    <center>Featured Pic</center>
+                  </th>
+                  <th>
                     <center>CONFIRMED</center>
                   </th>
                 </tr>
               </thead>
-              <tbody><?php $result=mysqli_query($conn,"SELECT s_no,wish,author,status FROM wish_tbl"); while ($row=mysqli_fetch_array($result,MYSQLI_ASSOC)){if($row['status']==1) $status="yes"; else $status="no;"?>
+              <tbody><?php $result=mysqli_query($conn,"SELECT s_no,wish,author,status,author_pic,embed FROM wish_tbl"); while ($row=mysqli_fetch_array($result,MYSQLI_ASSOC)){if($row['status']==1) $status="yes"; else $status="no"; if ($row['author_pic']!='') $profile="yes"; else $profile="no"; if ($row['embed']!='') $embed="yes"; else $embed="no"?>
                 <tr>
                   <td align="center">
                     <input type="checkbox">
@@ -77,6 +83,8 @@ Hope you like this small piece of work :D :D
                   <td align="left"><?=$row['s_no']?></td>
                   <td align="left"><?=$row['wish']?></td>
                   <td align="left"><?=$row['author']?></td>
+                  <td align="left"><?=$profile?></td>
+                  <td align="left"><?=$embed?></td>
                   <td align="left"><?=$status?></td>
                 </tr><?php } ?>
               </tbody>

@@ -121,7 +121,8 @@ function addUser($uName, $pWord,$level){
 
 function getSelectedPictures($start, $until){
   global $conn;
-  return mysqli_query($conn, "SELECT ");
+  $result=mysqli_query($conn, "SELECT s_no,link FROM picture_tbl order by rand()");
+  return $result;
 }
 
 function getConfigDOM(){
@@ -165,4 +166,31 @@ function saveConfigDetails($timezone,$theme_name,$page_title,$admin_name,$admin_
 
 }
 
- ?>
+
+function getPictures($path=''){
+  global $conn;
+  $sql="select s_no,link from picture_tbl";
+  $result=mysqli_query($conn, $sql);
+  if (mysqli_num_rows($result)==0) echo "No pictures in the database";
+  else{
+    $count=0;
+    while ($row=mysqli_fetch_array($result,MYSQLI_ASSOC)){
+      $count++?>
+      <div class="col-sm-2">
+        <label for="picture_check_<?php echo $row['s_no'];?>" class="pointer">
+          <img src="<?php echo $row['link']; ?>" alt="" class="img-thumbnail pictures">
+        </label>
+        <input type="checkbox" id="picture_check_<?php echo $row['s_no'];?>" name="pictures[]">
+  		</div>
+<?php
+    }
+  }
+}
+
+function getWishes(){
+  global $conn;
+  $sql="SELECT * FROM wish_tbl";
+  $result=mysqli_query($conn, $sql);
+  return $result;
+}
+?>

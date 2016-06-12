@@ -19,3 +19,88 @@ body#wait {
     body#wait a#wish-btn:hover {
       background-color: white;
       color: #3498db; }
+
+body#main {
+  background-color: #1f1f1f; }
+  body#main #gateway {
+    background-color: black;
+    position: fixed;
+    z-index: 100;
+    height: 100vh;
+    width: 100vw;
+    opacity: 1;
+    transition: all 0.6s ease-in-out;
+    color: green;
+    font-size: 20px; }
+    body#main #gateway .typed-cursor {
+      position: inline; }
+    body#main #gateway #sentence {
+      margin-top: 100px !important; }
+  body#main #holder {
+    position: fixed;
+    height: 100vh !important; }
+    body#main #holder .pic_container {
+      overflow: hidden;
+      margin: 0;
+      padding: 0;
+      transition: all 0.2s ease-in-out;
+      background-color: #ecf0f1; }
+      body#main #holder .pic_container:hover {
+        padding: 5px;
+        transition: all 0.2s ease-in-out; }
+      body#main #holder .pic_container .pic_shade {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #1f1f1f;
+        opacity: 0.8;
+        cursor: pointer; }
+        body#main #holder .pic_container .pic_shade:hover {
+          opacity: 0; }
+  body#main #wishes {
+    background-color: #ecf0f1;
+    margin: 0;
+    padding: 0; }
+    body#main #wishes .seq-next-button {
+      cursor: pointer;
+      position: absolute;
+      top: 37vh;
+      left: 45%;
+      z-index: 50; }
+    body#main #wishes ul {
+      margin: 0;
+      padding: 0; }
+      body#main #wishes ul li {
+        list-style: none;
+        margin: 0;
+        padding: 0; }
+        body#main #wishes ul li .wish_container {
+          min-height: 100vh; }
+        body#main #wishes ul li .featured_pic {
+          background-color: black;
+          display: block;
+          margin: 0 auto;
+          height: 40vh;
+          overflow: hidden; }
+        body#main #wishes ul li .profile_pic {
+          width: 15vh;
+          height: 15vh;
+          margin-top: 30px; }
+
+.typed-cursor {
+  opacity: 1;
+  font-weight: 100;
+  -webkit-animation: blink 0.7s infinite;
+  -moz-animation: blink 0.7s infinite;
+  -ms-animation: blink 0.7s infinite;
+  -o-animation: blink 0.7s infinite;
+  animation: blink 0.7s infinite; }
+
+.hide {
+  opacity: 0 !important;
+  transition: all 0.6s ease-in-out; }
+
+body#main .col-sm-4 {
+  margin: 0;
+  padding: 0; }

@@ -74,7 +74,7 @@ Hope you like this small piece of work :D :D
                 <p class="msg"></p>
               </div><br>
               <button class="btn btn-default" type="reset">Clear</button>
-              <button class="btn btn-primary" type="submit">Submit</button>
+              <button class="btn btn-primary" id="submit" type="submit">Submit</button>
             </form>
             <form class="upload" id="profile_file_form" action="functionalities/process-upload.php" enctype="multipart/form-data" role="form" method="post" onsubmit="return false" hidden>
               <input id="profile_file" type="file" name="profile_file" onchange="input=this.id;prog='#'+input+'_prog_container';$('#profile_file_status').text(this.value);$('#inputID_p').val(input);$('#dir_path_p').val('../wishes/profile/');$('#profile_file_form').submit()" disabled>
@@ -95,7 +95,7 @@ Hope you like this small piece of work :D :D
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-body" style="align: left"><img id="loader" src="src/loader.gif" width="160px" style="display: block; margin: 0 auto "></div>
-          <div class="modal-footer" hidden><a class="btn btn-primary" data-dismiss="modal" onclick="if (errorR=true){$('#name').focus;}">Ok</a></div>
+          <div class="modal-footer" hidden><a class="btn btn-primary" id="ok" data-dismiss="modal" onclick="if(errorR){$('#name').focus(); else window.location='index.php';}">Ok</a></div>
         </div>
       </div>
     </div><script src="js/jquery-2.2.0.min.js"></script>

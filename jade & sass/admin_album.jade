@@ -14,12 +14,21 @@ html
         a.btn.btn-danger.edit_button
           span.glyphicon.glyphicon-trash
           |  Delete
-        .panel.panel-default#album_container
-          |  
+        .panel.panel-default.picture_container(style="padding: 10px")
+          h4 Uploading Pictures
+          hr
+          .row.text-center#new
+            p#new_status No files selected
+            img#progress(src="src/loader.gif" style="display: none")
+        .panel.panel-default.picture_container(style="padding: 10px")
+          h4 Existing Pictures
+          hr
+          .row.text-center#existing
+            form#select_pictures(action="" method="post")
+              <?php getPictures(); ?>
 
-
-    form.upload#pictures(action="functionalities/process-upload.php" method="post" enctype="multipart/form-data" role="form" onsubmit="return false" hidden)
-      input#pictures_upload(type="file" name="pictures_upload" onchange="var input=this.id; $('#'+input).children('inputID').value=input;$('#'+input).children('dir_path').value='../album/'; $('#pictures').submit()" disabled)
+    form.upload#pictures(action="functionalities/process_multiple_upload.php" method="post" enctype="multipart/form-data" role="form" onsubmit="return false" hidden)
+      input#pictures_upload(type="file" name="images[]" onchange="var input=this.id; $('#'+input).children('inputID').value=input;$('#'+input).children('dir_path').value='../album/'; $('#pictures').submit()" multiple disabled)
       input#inputID(type="text" name="inputID")
       input#dir_path(type="text" name="dir_path")
 

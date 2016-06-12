@@ -49,11 +49,24 @@ Hope you like this small piece of work :D :D
         <h1 class="logo visible-lg visible-md">Birthday</h1>
         <hr class="visible-lg visible-md">
         <label class="btn btn-default edit_button disabled" id="pictures_upload_label" for="pictures_upload">Upload Pictures...</label><a class="btn btn-danger edit_button"><span class="glyphicon glyphicon-trash"></span> Delete</a>
-        <div class="panel panel-default" id="album_container"> </div>
+        <div class="panel panel-default picture_container" style="padding: 10px">
+          <h4>Uploading Pictures</h4>
+          <hr>
+          <div class="row text-center" id="new">
+            <p id="new_status">No files selected</p><img id="progress" src="src/loader.gif" style="display: none">
+          </div>
+        </div>
+        <div class="panel panel-default picture_container" style="padding: 10px">
+          <h4>Existing Pictures</h4>
+          <hr>
+          <div class="row text-center" id="existing">
+            <form id="select_pictures" action="" method="post"><?php getPictures(); ?></form>
+          </div>
+        </div>
       </div>
     </div>
-    <form class="upload" id="pictures" action="functionalities/process-upload.php" method="post" enctype="multipart/form-data" role="form" onsubmit="return false" hidden>
-      <input id="pictures_upload" type="file" name="pictures_upload" onchange="var input=this.id; $('#'+input).children('inputID').value=input;$('#'+input).children('dir_path').value='../album/'; $('#pictures').submit()" disabled>
+    <form class="upload" id="pictures" action="functionalities/process_multiple_upload.php" method="post" enctype="multipart/form-data" role="form" onsubmit="return false" hidden>
+      <input id="pictures_upload" type="file" name="images[]" onchange="var input=this.id; $('#'+input).children('inputID').value=input;$('#'+input).children('dir_path').value='../album/'; $('#pictures').submit()" multiple disabled>
       <input id="inputID" type="text" name="inputID">
       <input id="dir_path" type="text" name="dir_path">
     </form><script src="js/jquery-2.2.0.min.js"></script>

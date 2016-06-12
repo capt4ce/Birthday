@@ -27,7 +27,7 @@ Hope you like this small piece of work :D :D
               <li><a class="menu-labels" <?php echo passURL("admin_users.php");?>><span class="glyphicon glyphicon-user"></span> Users</a></li>
               <li><a class="menu-labels" <?php echo passURL("admin_settings.php");?>><span class="glyphicon glyphicon-cog"></span> Settings</a></li>
               <li><a class="menu-labels" href="about.php"><span class="glyphicon glyphicon-info-sign"></span> About</a></li>
-              <li><a class="menu-labels" href="functionalities/process_signout.php"><span class="glyphicon glyphicon-log-out"></span> Signout</a></li>
+              <li><a class="menu-labels" <?php echo passURL("functionalities/process_signout.php");?>><span class="glyphicon glyphicon-log-out"></span> Signout</a></li>
             </ul>
           </div>
         </div>
@@ -42,7 +42,7 @@ Hope you like this small piece of work :D :D
           <li class="menus"><a class="menu-labels" <?php echo passURL("admin_users.php"); if ($page=='users') echo " active"?>>Users<span class="glyphicon glyphicon-user"></span></a></li>
           <li class="menus"><a class="menu-labels" <?php echo passURL("admin_settings.php"); if ($page=='settings') echo " active"?>>Settings<span class="glyphicon glyphicon-cog"></span></a></li>
           <li class="menus"><a class="menu-labels" href="about.php">About<span class="glyphicon glyphicon-info-sign"></span></a></li>
-          <li class="menus"><a class="menu-labels" href="functionalities/process_signout.php">Signout<span class="glyphicon glyphicon-log-out"></span></a></li>
+          <li class="menus"><a class="menu-labels"  <?php echo passURL("functionalities/process_signout.php");?>>Signout<span class="glyphicon glyphicon-log-out"></span></a></li>
         </ul>
       </div>
       <div id="cell-main">

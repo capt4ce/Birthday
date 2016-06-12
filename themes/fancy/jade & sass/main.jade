@@ -2,17 +2,52 @@ include ./components/head_comment.jade
 html
   head
     include ./components/component_header.jade
+    link(href="css/sequence-theme.card-flip.css")
     title Happy Birthday <?php echo $config->birthday_name?>
   body#main
-    .container#pics1
-      <?php $result=getSelectedPictures(1,2); for(i=0; i<$result; i++){?>
-        .pic_container
-          img(src="<?=$row['link']?>")
-          .pic_shade
-      <?php ?>
-    .container#wishes
+    .row#holder
+      .col-sm-4#pics1
+        <?php $result=getSelectedPictures(1,2); $count=0; while($row=mysqli_fetch_array($result,MYSQLI_ASSOC)){$count++?>
+          .pic_container.col-sm-3
+            <img src="<?=$row['link']?>" class="img-responsive">
+            .pic_shade
+        <?php }?>
+      .col-sm-4#wishes
+        #sequence
+          <a class="seq-next-button seq-next" type="button" aria-label="Next">
+            <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" viewBox="16.1 -0.7 60 60" enable-background="new 16.1 -0.7 60 60" role="img" aria-labelledby="title-down-arrow"><title id="title-down-arrow">Down/Next Arrow</title><path d="M46.407 1.399l27.435 27.435-28.213 28.213-27.435-27.435z"/><path fill="#fff" d="M46.1 59.3l-30-30 30-30 30 30-30 30zm-22.9-30l22.9 22.9 22.9-22.9-22.9-22.9-22.9 22.9zM39.278 23.872l11.031 11.031-4.172 4.172-11.031-11.031zM57.172 28.079l-11.031 11.031-4.172-4.172 11.031-11.031z"/></svg>
+          </a>
+          ul.seq-canvas
+            <?php $result=getWishes(); while($row=mysqli_fetch_array($result, MYSQLI_ASSOC)){?>
+              li
+                .wish_container
+                  .featured_pic
+                    <img src="<?php if ($row['embed']!='') echo 'wishes/embed/'.$row['embed']; else echo 'src/no-image-found.jpg';?>" class="featured_pic">
+                  .profile_and_wish.text-center
+                    .profile_pic_container
+                      <img src="<?php if ($row['author_pic']!='') echo 'wishes/profile/'.$row['author_pic'];else echo 'src/no-image-found.jpg'?>" class="img-circle profile_pic">
+                    h4.name_dtl
+                      strong
+                        | <?php echo $row['author']?>
+                    p.wish_dtl
+                      | <?php echo $row['wish']?>
+            <?php }?>
 
-    .container#pics2
+      .col-sm-4#pics2
+        <?php $result=getSelectedPictures(1,2); $count=0; while($row=mysqli_fetch_array($result,MYSQLI_ASSOC)){$count++?>
+          .pic_container.col-sm-3
+            <img src="<?=$row['link']?>" class="img-responsive">
+            .pic_shade
+        <?php }?>
 
+    #gateway.text-center
+      div(style="margin-top:150px")
+        span#sentence
 
     include ./components/component_footer.jade
+    script(src="js/typed.js")
+    <script src="<?php echo $theme_path;?>/js/main.js"></script>
+    script(src="js/imagesloaded.pkgd.min.js")
+    script(src=src="js/hammer.min.js")
+    script(src="js/sequence.min.js")
+    script(src="js/sequence-theme.card-flip.js")
